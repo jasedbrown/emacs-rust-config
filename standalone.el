@@ -12,11 +12,6 @@
 (setq package-user-dir (expand-file-name "elpa/" user-emacs-directory))
 (package-initialize)
 
-;; Work around an Emacs v26 bug.
-;; https://www.reddit.com/r/emacs/comments/cdei4p/failed_to_download_gnu_archive_bad_request/
-(when (version< emacs-version "27")
-  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
-
 ;; Install use-package that we require for managing all other dependencies
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -38,7 +33,7 @@
 
 ;; Some common sense settings
 
-(load-theme 'leuven t)
+;; (load-theme 'leuven t)
 (fset 'yes-or-no-p 'y-or-n-p)
 (recentf-mode 1)
 (setq recentf-max-saved-items 100
@@ -50,14 +45,15 @@
 (when (fboundp 'scroll-bar-mode)
   (scroll-bar-mode 0))
 
-(cond
- ((member "Monaco" (font-family-list))
-  (set-face-attribute 'default nil :font "Monaco-12"))
- ((member "Inconsolata" (font-family-list))
-  (set-face-attribute 'default nil :font "Inconsolata-12"))
- ((member "Consolas" (font-family-list))
-  (set-face-attribute 'default nil :font "Consolas-11"))
- ((member "DejaVu Sans Mono" (font-family-list))
-  (set-face-attribute 'default nil :font "DejaVu Sans Mono-10")))
+;; (cond
+;;  ((member "Monaco" (font-family-list))
+;;   (set-face-attribute 'default nil :font "Monaco-12"))
+;;  ((member "Inconsolata" (font-family-list))
+;;   (set-face-attribute 'default nil :font "Inconsolata-12"))
+;;  ((member "Consolas" (font-family-list))
+;;   (set-face-attribute 'default nil :font "Consolas-11"))
+;;  ((member "DejaVu Sans Mono" (font-family-list))
+;;   (set-face-attribute 'default nil :font "DejaVu Sans Mono-10")))
 
+(load-file (expand-file-name "jeb.el" user-emacs-directory))
 (load-file (expand-file-name "init.el" user-emacs-directory))

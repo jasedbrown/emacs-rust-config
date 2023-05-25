@@ -5,3 +5,5 @@ recentf
 custom.el
 /.dap-breakpoints
 /.extension/
+/.cache
+/transient/
